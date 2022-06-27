@@ -1,0 +1,434 @@
+body{
+    min-height: 100vh;
+    width: 100%;
+}
+  
+
+.fondo {
+    background-color: #8e3200;
+    padding: 10px;
+    min-height: 100vh;
+    width: 100%;
+}
+  
+
+
+
+.cuerpo {
+    background-color: #ffebc1;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 15px 10px 15px rgba(0, 0, 0, 0.47);
+    min-height: 100vh;
+    width: 100%;
+}
+
+/*Titulo*/
+.titulo{
+    max-width: 1024px;
+    max-height:500px;
+    display: flex; 
+    
+}
+
+.cuadrado1{
+  width: 45%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cuadrado2{
+  width:75%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (max-width: 500px){
+    .titulo{
+        max-width: 1024px;
+        max-height:500px;
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .paj {
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 50%;
+        background-color: #d7a86e;
+        transition: 1s linear; 
+        margin-top: 5px;
+      }
+
+      .cuadrado1{
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .cuadrado2{
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+}
+
+
+
+
+.paj {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    background-color: #d7a86e;
+    transition: 1s linear; 
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+
+.paj:hover {
+    -webkit-box-shadow: 10px 10px 14px 2px rgba(0, 0, 0, 0.47);
+    box-shadow: 10px 10px 14px 2px rgba(0, 0, 0, 0.47);
+  }
+
+  @media (max-width: 320px){
+    .cuerpo h1{
+        font-size: 24px;
+        padding-right: 2px;
+    }
+  }
+
+  .letra{
+    color:#f66b0e;
+    position: relative;
+    top:0px;
+    animation-name: letraA;
+    animation-duration: 2.5s;
+    animation-delay: 0s;
+    animation-direction: normal;
+    animation-iteration-count: initial;
+    animation-timing-function: linear;
+
+    font-size: 45px;
+  }
+  
+  @keyframes letraA {
+    from {
+      top: -50px;
+    }
+
+    to {
+      top: 0px;
+    }
+  }
+
+  /*Titulo*/
+
+ /*barra*/ 
+
+ .barra{
+    max-width: 1024px;
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.barra2{
+  
+  width: 70%;
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (max-width: 500px){
+  .barra2{
+    
+    width: 90%;
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.barra a{
+    text-decoration: none;
+    color: #a64b2a;
+}
+
+.barra a:hover{
+    color:#f66b0e;
+}
+
+ /*barra*/ 
+
+
+ /*Carrusel*/
+ .fondo_slider {
+  width: auto;
+  max-height: 1000px;
+  background-color: #a64b2a;
+}
+
+.carousel {
+  margin: 20px;
+  margin-left: 68px;
+}
+
+@media (max-width: 500px) {
+  .carousel {
+    margin: 5px;
+  }
+}
+
+.d-block {
+  max-height: 400px;
+  max-width: 900px;
+}
+
+@media (max-width: 400px) {
+  .d-block {
+    height: 280px;
+    max-width: 900px;
+  }
+}
+
+
+ /*Carrusel*/
+
+ /*Article*/
+ article{
+    display: flex;
+ }
+
+
+
+ .sergio {
+    max-height: 350px;
+    max-width: 350px;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 50%;
+    margin: 10px;
+    transition: 1s linear;
+  }
+
+  @media (max-width: 500px){
+    .sergio {
+        max-height: 200px;
+        max-width: 200px;
+        min-width: 100px;
+        min-height: 100px;
+        border-radius: 50%;
+        margin: 10px;
+        transition: 1s linear;
+      }
+
+  }
+
+
+
+  .sergio:hover {
+    box-shadow: 10px 10px 14px 2px rgba(0, 0, 0, 0.47);
+  }
+
+  .presentacion{
+    margin: 10px;
+  }
+
+  .cuadrado3{
+    width: 40%;
+    
+  }
+
+  .cuadrado4{
+    width:60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  @media (max-width: 920px){
+    article{
+     
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .cuadrado3{
+    min-width: 60%;
+   
+  }
+
+   .cuadrado4{
+    
+    width:60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  }
+
+  @media (max-width: 400px){
+    .cuadrado3{
+      min-width: 60%;
+      
+      margin-right: 10%;
+    }
+
+  }
+
+  @media (max-width: 320px){
+    .cuadrado3{
+      min-width: 60%;
+      
+      margin-right: 15%;
+    }
+
+  }
+ 
+
+
+  /*Article*/
+
+  /*footer*/
+
+  .footer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 4px;
+    
+    
+  }
+
+  .linea_separador {
+    background-color: #a64b2a;
+    width: auto;
+    height: 5px;
+  }
+
+
+  .letra2{
+    color:#f66b0e;
+  }
+
+  /*footer*/
+
+  /*boton git hub y about.html*/
+  .bot1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+  }
+  
+  /*##############*/
+  /*Arquitecto.html*/
+  /*##############*/
+
+.titulo_arquitecto{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.linea_separador2{
+  background-color: #a64b2a;
+  width: auto;
+  height: 5px;
+  margin-top: 10px;
+}
+
+ /*##############*/
+  /*Diseño.html*/
+  /*##############*/
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+.img_diseño{
+  max-width: 250px;
+  padding: 2px;
+  transition: 1s linear; 
+}
+
+ /*##############*/
+  /*Contacto.html*/
+  /*##############*/
+
+  .cuadrado_contacto{
+   display: flex;
+  }
+
+  .contacto{
+   
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+
+  .contacto li{
+    padding:20px;
+  }
+
+  .color2{
+    color:#f66b0e;
+  }
+
+  .mapa{
+    
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  @media (max-width: 700px){
+
+    .cuadrado_contacto{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+     }
+
+     .contacto{
+      width: 50%;
+      margin-top: 50px;
+    
+    }
+
+    .mapa{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     padding-bottom: 5px;
+
+    }
+
+    .iframe{
+      max-width: 300px;
+    }
+
+
+  }
+
+
