@@ -340,6 +340,8 @@ article {
   background-color: #a64b2a;
   width: auto;
   height: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 
@@ -357,21 +359,67 @@ article {
 }
 
 /*##############*/
-/*Arquitecto.html*/
+/*Construcciones.html*/
 /*##############*/
-
-.arq {
-  min-height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .titulo_arquitecto {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+}
+
+.img_construccion,
+.img_construccion2,
+.img_construccion3,
+.img_construccion4,
+.img_construccion5,
+.img_construccion6 {
+  max-width: 250px;
+  padding: 2px;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.img_construccion:hover,
+.img_construccion2:hover,
+.img_construccion3:hover,
+.img_construccion4:hover,
+.img_construccion5:hover,
+.img_construccion6:hover {
+  padding: 0px;
+  box-shadow: 10px 10px 14px 2px rgba(0, 0, 0, 0.47);
+}
+
+@media (max-width: 1200px) {
+
+  .img_diseño:hover,
+  .img_diseño2:hover,
+  .img_diseño3:hover,
+  .img_diseño4:hover {
+    padding: 0px;
+    box-shadow: 10px 10px 14px 2px rgba(0, 0, 0, 0.47);
+  }
+
+  .zoom-text,
+  .zoom-text2,
+  .zoom-text3,
+  .zoom-text4 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+}
+
+@media (max-width: 320px) {
+
+  .img_diseño:hover,
+  .img_diseño2:hover,
+  .img_diseño3:hover,
+  .img_diseño4:hover {
+    padding: 0px;
+    box-shadow: 10px 10px 14px 2px rgba(0, 0, 0, 0.47);
+  }
 }
 
 .linea_separador2 {
@@ -381,11 +429,12 @@ article {
   margin-top: 10px;
 }
 
+
+
 .linea_separador3 {
   background-color: #a64b2a;
   width: auto;
   height: 5px;
-  margin-top: 100px;
 }
 
 /*##############*/
@@ -531,7 +580,8 @@ article {
 .image-box,
 .image-box2,
 .image-box3,
-.image-box4 {
+.image-box4,
+.image-box5 {
   width: 70vw;
   height: 80vh;
   position: fixed;
@@ -550,7 +600,9 @@ article {
 #prev-btn3,
 #next-btn3,
 #prev-btn4,
-#next-btn4 {
+#next-btn4,
+#prev-btn5,
+#next-btn5 {
   width: 0;
   height: 0;
   border-top: 20px solid transparent;
@@ -565,7 +617,8 @@ article {
 #prev-btn,
 #prev-btn2,
 #prev-btn3,
-#prev-btn4 {
+#prev-btn4,
+#prev-btn5 {
   border-right: 40px solid grey;
   left: -50px;
 }
@@ -573,7 +626,8 @@ article {
 #next-btn,
 #next-btn2,
 #next-btn3,
-#next-btn4 {
+#next-btn4,
+#next-btn5 {
   border-left: 40px solid grey;
   right: -50px;
 }
@@ -585,7 +639,9 @@ article {
 #prev-btn3:hover,
 #next-btn3:hover,
 #prev-btn4:hover,
-#next-btn4:hover {
+#next-btn4:hover,
+#next-btn5:hover,
+#prev-btn5:hover, {
   opacity: 0.6;
 }
 
@@ -596,7 +652,8 @@ article {
   .image-box,
   .image-box2,
   .image-box3,
-  .image-box4 {
+  .image-box4,
+  .image-box5 {
     height: 55vh;
   }
 }
@@ -606,7 +663,8 @@ article {
   .image-box,
   .image-box2,
   .image-box3,
-  .image-box4 {
+  .image-box4,
+  .image-box5 {
     height: 50vh;
   }
 }
@@ -616,7 +674,8 @@ article {
   .image-box,
   .image-box2,
   .image-box3,
-  .image-box4 {
+  .image-box4,
+  .image-box5 {
     height: 45vh;
   }
 }
