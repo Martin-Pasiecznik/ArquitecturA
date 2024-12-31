@@ -12,9 +12,101 @@
 
 </head>
 
+
+
+<title>Fireworks Display</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+         /* Oculta barras de desplazamiento */
+    }
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999; /* Por encima de todos los elementos */
+        pointer-events: none; /* No interfiere con clics u otros eventos */
+    }
+</style>
+</head>
 <body>
-  <div class="firework"></div>
-  <div class="firework2"></div>
+<canvas id="fireworks"></canvas>
+<script>
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+    const particles = [];
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Particle {
+        constructor(x, y, color, size) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.size = size;
+            this.dx = (Math.random() - 0.5) * 6;
+            this.dy = (Math.random() - 0.5) * 6;
+            this.alpha = 1;
+        }
+        update() {
+            this.x += this.dx;
+            this.y += this.dy;
+            this.alpha -= 0.02; // Se desvanece
+            if (this.alpha <= 0) {
+                this.alpha = 0;
+            }
+        }
+        draw() {
+            ctx.globalAlpha = this.alpha;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    }
+
+    function createFirework(x, y) {
+        const colors = ['#ff5733', '#33ff57', '#5733ff', '#f5b041', '#85c1e9'];
+        const numParticles = 50 + Math.random() * 50;
+        for (let i = 0; i < numParticles; i++) {
+            const size = Math.random() * 3 + 1;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particles.push(new Particle(x, y, color, size));
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.update();
+            p.draw();
+            if (p.alpha <= 0) {
+                particles.splice(i, 1);
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+
+    canvas.addEventListener('click', (e) => {
+        createFirework(e.clientX, e.clientY);
+    });
+
+    // Auto-fireworks
+    setInterval(() => {
+        createFirework(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height
+        );
+    }, 1200);
+
+    animate();
+</script>
+
+
+
+<body>
   <div class="fondo">
     <div class="mensaje">¡¡¡Feliz año 2025!!!</div>
     <div class="cuerpo">
