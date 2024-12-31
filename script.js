@@ -327,7 +327,7 @@
     })
 
     function currentImageDisplay(position) {
-        imageBox7.style.background = `url(imagenes/img2025/a${currentImageIdx7}.jpg) center/cover no-repeat`;
+        imageBox7.style.background = `url(imagenes/img2025/A${currentImageIdx7}.jpg) center/cover no-repeat`;
     }
 
     prevBtn7.addEventListener('click', function () {
