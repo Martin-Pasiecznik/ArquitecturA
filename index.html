@@ -33,82 +33,114 @@
 <body>
 <canvas id="fireworks"></canvas>
 <script>
-    const canvas = document.getElementById('fireworks');
-    const ctx = canvas.getContext('2d');
-    const particles = [];
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let animationId;
+
+function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
 
-    class Particle {
-        constructor(x, y, color, size) {
-            this.x = x;
-            this.y = y;
-            this.color = color;
-            this.size = size;
-            this.dx = (Math.random() - 0.5) * 6;
-            this.dy = (Math.random() - 0.5) * 6;
-            this.alpha = 1;
-        }
-        update() {
-            this.x += this.dx;
-            this.y += this.dy;
-            this.alpha -= 0.02; // Se desvanece
-            if (this.alpha <= 0) {
-                this.alpha = 0;
-            }
-        }
-        draw() {
-            ctx.globalAlpha = this.alpha;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        }
+class Particle {
+    constructor(x, y, color, velocity) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.velocity = velocity;
+        this.friction = 0.95;
+        this.gravity = 0.02;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.005 + 0.005;
     }
 
-    function createFirework(x, y) {
-        const colors = ['#ff5733', '#33ff57', '#5733ff', '#f5b041', '#85c1e9'];
-        const numParticles = 50 + Math.random() * 50;
-        for (let i = 0; i < numParticles; i++) {
-            const size = Math.random() * 3 + 1;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            particles.push(new Particle(x, y, color, size));
-        }
+    draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 5; // Resplandor suave
+        ctx.shadowColor = this.color;
+        ctx.fill();
+        ctx.restore();
     }
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = particles.length - 1; i >= 0; i--) {
-            const p = particles[i];
-            p.update();
-            p.draw();
-            if (p.alpha <= 0) {
-                particles.splice(i, 1);
-            }
-        }
-        requestAnimationFrame(animate);
+    update() {
+        this.velocity.x *= this.friction;
+        this.velocity.y *= this.friction;
+        this.velocity.y += this.gravity;
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.alpha -= this.decay;
     }
+}
 
-    canvas.addEventListener('click', (e) => {
-        createFirework(e.clientX, e.clientY);
+function createFirework(x, y) {
+    const particleCount = 80;
+    const angleStep = (Math.PI * 2) / particleCount;
+    const colors = ['#FF1493', '#00BFFF', '#FFD700', '#ADFF2F', '#FF4500', '#FFFFFF'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    for (let i = 0; i < particleCount; i++) {
+        const power = Math.random() * 6 + 3;
+        particles.push(new Particle(x, y, color, {
+            x: Math.cos(angleStep * i) * power * Math.random(),
+            y: Math.sin(angleStep * i) * power * Math.random()
+        }));
+    }
+}
+
+function animate() {
+    // IMPORTANTE: clearRect permite que se vea el fondo de tu HTML
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((particle, index) => {
+        if (particle.alpha > 0) {
+            particle.update();
+            particle.draw();
+        } else {
+            particles.splice(index, 1);
+        }
     });
+    animationId = requestAnimationFrame(animate);
+}
 
-    // Auto-fireworks
-    setInterval(() => {
-        createFirework(
-            Math.random() * canvas.width,
-            Math.random() * canvas.height
-        );
-    }, 1200);
+// Lógica de lanzamiento automático
+let autoFireInterval = setInterval(() => {
+    createFirework(Math.random() * canvas.width, Math.random() * (canvas.height * 0.5));
+}, 1800);
 
-    animate();
+// DETENER CUANDO NO ESTÁ VISIBLE
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        // Pausar todo
+        cancelAnimationFrame(animationId);
+        clearInterval(autoFireInterval);
+    } else {
+        // Reanudar
+        animate();
+        autoFireInterval = setInterval(() => {
+            createFirework(Math.random() * canvas.width, Math.random() * (canvas.height * 0.5));
+        }, 1200);
+    }
+});
+
+canvas.addEventListener('click', (e) => {
+    createFirework(e.clientX, e.clientY);
+});
+
+animate();
 </script>
 
 
 
 <body>
   <div class="fondo">
-    <div class="mensaje">¡¡¡Feliz año 2025!!!</div>
+    <div class="mensaje">¡¡¡Feliz año 2026!!!</div>
     <div class="cuerpo">
 
       <div class="titulo">
